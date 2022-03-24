@@ -51,12 +51,14 @@ class MobileAdmob {
     Widget? loadingWidget,
     ValueChanged<bool>? loadSucessful,
     bool? showError,
+    Color? color,
   }) {
     return AdmobWidget(
       adUnitId: Platform.isAndroid ? _testAndroidId : _testIOSId,
       size: AdSize.fullBanner, // const AdSize(width: 390, height: 55),
       loadingWidget: loadingWidget,
       loadSucessful: loadSucessful,
+      color: color,
     );
   }
 
@@ -64,12 +66,14 @@ class MobileAdmob {
     Widget? loadingWidget,
     ValueChanged<bool>? loadSucessful,
     bool? showError,
+    Color? color,
   }) {
     return AdmobWidget(
       adUnitId: Platform.isAndroid ? _testAndroidId : _testIOSId,
       size: AdSize.mediumRectangle,
       loadingWidget: loadingWidget,
       loadSucessful: loadSucessful,
+      color: color,
     );
   }
 
@@ -77,12 +81,19 @@ class MobileAdmob {
     Widget? loadingWidget,
     ValueChanged<bool>? loadSucessful,
     bool? showError,
+    int? width,
+    int? height,
+    Color? color,
   }) {
     return AdmobWidget(
       adUnitId: Platform.isAndroid ? _testAndroidId : _testIOSId,
-      size: const AdSize(width: 412, height: 340),
+      size: AdSize(
+        width: width ?? 412,
+        height: height ?? 340,
+      ),
       loadingWidget: loadingWidget,
       loadSucessful: loadSucessful,
+      color: color,
     );
   }
 

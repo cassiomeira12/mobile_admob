@@ -6,12 +6,14 @@ class AdmobWidget extends StatefulWidget {
   final AdSize size;
   final Widget? loadingWidget;
   final bool showError;
+  final Color? color;
   final ValueChanged<bool>? loadSucessful;
 
   const AdmobWidget({
     Key? key,
     required this.adUnitId,
     required this.size,
+    this.color,
     this.loadingWidget,
     this.showError = true,
     this.loadSucessful,
@@ -75,7 +77,7 @@ class _AdmobWidgetState extends State<AdmobWidget> {
             alignment: Alignment.center,
             width: widget.size.width.toDouble(),
             height: widget.size.height.toDouble(),
-            color: Theme.of(context).cardColor,
+            color: widget.color, // Theme.of(context).cardColor,
             child: widget.loadingWidget ?? const CircularProgressIndicator(),
           )
         : _hasError
@@ -84,7 +86,7 @@ class _AdmobWidgetState extends State<AdmobWidget> {
                 width: widget.size.width.toDouble(),
                 height: widget.size.height.toDouble(),
                 padding: const EdgeInsets.symmetric(horizontal: 10),
-                color: Theme.of(context).cardColor,
+                color: widget.color, // Theme.of(context).cardColor,
                 child: Text(
                   widget.showError ? _error : '',
                   textAlign: TextAlign.center,
@@ -94,7 +96,7 @@ class _AdmobWidgetState extends State<AdmobWidget> {
                 alignment: Alignment.center,
                 width: widget.size.width.toDouble(),
                 height: widget.size.height.toDouble(),
-                color: Theme.of(context).cardColor,
+                color: widget.color, // Theme.of(context).cardColor,
                 child: AdWidget(ad: _bannerAd),
               );
   }
